@@ -1,0 +1,137 @@
+/* Styles généraux */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.login-container {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(to left, #E8EEF1 40%, #43B0F199 100%);
+}
+
+/* Section gauche (image) */
+.left-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-image {
+    width: 60%;
+}
+
+/* Section droite (formulaire) */
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.subtitle {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Champs de formulaire */
+.input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 8px;
+    background: #E8EEF1;
+    border-bottom: 1px solid black;
+}
+
+.input-group img {
+    margin-right: 5%;
+    width: 7%;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background-color: #E8EEF1;
+}
+
+/* Bouton de connexion */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Ligne de séparation */
+.separator {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    margin: 20px 0;
+    color: gray;
+}
+
+.separator hr {
+    flex-grow: 1;
+    border: none;
+    height: 1px;
+    background-color: gray;
+}
+
+.separator span {
+    margin: 0 10px;
+}
+
+/* Bouton Google */
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.google-button img {
+    margin-right: 10%;
+    width: 7%;
+}
+
+/* Messages d'erreur */
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
