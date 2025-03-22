@@ -10,7 +10,8 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
 
     echo $id ;
 
-}   
+}
+   
     
 
     
