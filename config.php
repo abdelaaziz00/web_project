@@ -1,9 +1,13 @@
 <?php
-// config.php
+define('DB_SERVER', 'localhost'); // Adresse du serveur
+define('DB_USERNAME', 'root'); // Nom d'utilisateur MySQL
+define('DB_PASSWORD', ''); // Mot de passe MySQL
+define('DB_NAME', 'prof_app'); // Nom de la base de données
 
-// Database connection constants
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');  // Use your MySQL username here
-define('DB_PASSWORD', '');      // Use your MySQL password here
-define('DB_NAME', 'prof_app');  // Replace with your actual database name
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+// Vérifier la connexion
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
