@@ -27,7 +27,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(to right, #dfe9f3, #ffffff);
             color: #333;
         }
 
@@ -78,15 +78,29 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         h2 {
             text-align: center;
             color: #007bff;
+            margin-bottom: 20px;
         }
 
         /* Cours */
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
         .course {
-            background-color: #f9f9f9;
-            padding: 15px;
-            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+            width: 300px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .course:hover {
+            transform: translateY(-5px);
         }
 
         .course h3 {
@@ -104,7 +118,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             color: white;
             border-radius: 5px;
             display: inline-block;
-            margin-right: 10px; /* Espacement entre les boutons */
+            font-size: 14px;
         }
 
         .btn-primary {
@@ -117,10 +131,27 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
 
         .btn-danger {
             background-color: #dc3545;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-danger:hover {
             background-color: #c82333;
+        }
+
+        /* Conteneur pour les boutons */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* Message d'erreur */
+        .error {
+            color: red;
+            font-size: 16px;
+            text-align: center;
         }
 
         /* Footer */
@@ -131,19 +162,6 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             color: white;
             margin-top: 40px;
         }
-
-        /* Message d'erreur */
-        .error {
-            color: red;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        /* Conteneur pour les boutons côte à côte */
-        .button-group {
-            display: flex;
-            justify-content: flex-start; /* Aligne les boutons à gauche */
-        }
     </style>
 </head>
 <body>
@@ -151,8 +169,9 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
     <!-- Barre de navigation -->
     <nav>
         <ul>
-            <li><a href="home_student.php">Home</a></li>
+            <li><a href="home_student.php">Accueil</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
+            <li><a href="profile.php">Mon Profil</a></li>
             <li><a href="../autentification/login.php">Déconnexion</a></li>
         </ul>
     </nav>
@@ -160,27 +179,30 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
     <div class="container">
         <h2>Mes Cours</h2>
 
-        <?php
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='course'>
-                        <h3>" . htmlspecialchars($row['SUJET']) . "</h3>
-                        <p>" . htmlspecialchars($row['DESCRIPTION']) . "</p>
-                        <p><strong>Professeur:</strong> " . htmlspecialchars($row['prof_nom']) . "</p>
-                        <div class='button-group'>
-                            <a href='course_detail.php?id_cour=" . $row['ID_COUR'] . "' class='btn btn-primary'>Voir plus</a>
-                            <form method='POST' action='' class='remove-course-form'>
-                                <input type='hidden' name='id_cour' value='" . $row['ID_COUR'] . "'>
-                                <button type='submit' name='remove_course' class='btn btn-danger'>Se désinscrire</button>
+        <div class="courses">
+            <?php
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <div class="course">
+                        <h3><?php echo htmlspecialchars($row['SUJET']); ?></h3>
+                        <p><?php echo htmlspecialchars($row['DESCRIPTION']); ?></p>
+                        <p><strong>Professeur:</strong> <?php echo htmlspecialchars($row['prof_nom']); ?></p>
+                        <div class="button-group">
+                            <a href="course_detail.php?id_cour=<?php echo $row['ID_COUR']; ?>" class="btn btn-primary">Voir plus</a>
+                            <form method="POST" action="">
+                                <input type="hidden" name="id_cour" value="<?php echo $row['ID_COUR']; ?>">
+                                <button type="submit" name="remove_course" class="btn btn-danger">Se désinscrire</button>
                             </form>
                         </div>
-                      </div>";
+                    </div>
+            <?php
+                }
+            } else {
+                echo "<p class='error'>Vous n'êtes inscrit à aucun cours.</p>";
             }
-        } else {
-            echo "<p>Vous n'êtes inscrit à aucun cours.</p>";
-        }
-        ?>
-
+            ?>
+        </div>
     </div>
 
     <footer>

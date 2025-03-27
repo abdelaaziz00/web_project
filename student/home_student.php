@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Include the database configuration file
+// Inclusion de la configuration de la base de données
 include('../config.php');
 
 // Vérifier si l'utilisateur est connecté en tant qu'étudiant
@@ -15,18 +15,18 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil Étudiant</title>
     <style>
-        /* Style général */
+        /* Styles généraux */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: white; /* Fond blanc pour la page */
             color: #333;
         }
 
-        /* Navigation */
+        /* Barre de navigation */
         nav {
-            background-color: #007bff;
+            background-color: #A1E3F9; /* Bleu clair pour la barre de navigation */
             padding: 15px 0;
             text-align: center;
         }
@@ -70,35 +70,45 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         /* Titre */
         h2 {
             text-align: center;
-            color: #007bff;
+            color: #A1E3F9; /* Bleu clair pour le titre */
+            margin-bottom: 20px;
         }
 
-        /* Cours */
+        /* Section des cours */
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Carte d'un cours */
         .course {
             background: #fff;
             padding: 20px;
-            margin: 15px 0;
+            width: 300px;
             border-radius: 8px;
             box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            text-align: center;
         }
 
         .course:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .course h3 {
-            color: #007bff;
+            color: #A1E3F9; /* Bleu clair pour les titres des cours */
         }
 
         .course p {
             color: #555;
         }
 
-        /* Bouton Read More */
+        /* Bouton "Voir plus" */
         .btn-primary {
             display: inline-block;
-            background-color: #007bff;
+            background-color: #A1E3F9; /* Bleu clair pour les boutons */
             color: white;
             padding: 10px 15px;
             text-decoration: none;
@@ -108,32 +118,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        /* Formulaire d'ajout */
-        .add-course-form {
-            margin-top: 10px;
-        }
-
-        .add-course-form input {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
-
-        .add-course-form button {
-            padding: 8px 12px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .add-course-form button:hover {
-            background-color: #218838;
+            background-color: #7CC1D6; /* Un peu plus foncé au survol */
         }
 
         /* Messages */
@@ -155,83 +140,47 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
     <!-- Barre de navigation -->
     <nav>
         <ul>
-            <li><a href="home_student.php">Home</a></li>
+            <li><a href="home_student.php">Accueil</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
+            <li><a href="profile.php">Mon Profil</a></li>
             <li><a href="../autentification/login.php">Déconnexion</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <h2>Les Cours</h2>
+        <h2>Les Cours Disponibles</h2>
 
-        <?php
-        // Récupérer tous les cours postés par les professeurs
-        $sql = "SELECT c.ID_COUR, c.SUJET, c.DESCRIPTION, p.NOM AS prof_nom
-                FROM cour c
-                JOIN professeur p ON c.ID2 = p.ID2";
+        <div class="courses">
+            <?php
+            // Récupérer tous les cours postés par les professeurs
+            $sql = "SELECT c.ID_COUR, c.SUJET, c.DESCRIPTION, p.NOM AS prof_nom
+                    FROM cour c
+                    JOIN professeur p ON c.ID2 = p.ID2";
 
-        $result = mysqli_query($conn, $sql);
+            $result = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                <div class="course">
-                    <h3><?php echo htmlspecialchars($row['SUJET']); ?></h3>
-                    <p><?php echo htmlspecialchars($row['DESCRIPTION']); ?></p>
-                    <p><strong>Professor:</strong> <?php echo htmlspecialchars($row['prof_nom']); ?></p>
-                    <a href="course_detail.php?id_cour=<?php echo $row['ID_COUR']; ?>" class="btn btn-primary">Voir plus</a>
-                    
-                    <form method="POST" action="" class="add-course-form">
-                        <label for="course_code">Entrer le code :</label>
-                        <input type="text" id="course_code" name="course_code" required>
-                        <input type="hidden" name="id_cour" value="<?php echo $row['ID_COUR']; ?>">
-                        <button type="submit" name="add_course">Ajouter dans mes cours</button>
-                    </form>
-                </div>
-                <?php
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <div class="course">
+                        <h3><?php echo htmlspecialchars($row['SUJET']); ?></h3>
+                        <p><?php echo htmlspecialchars($row['DESCRIPTION']); ?></p>
+                        <p><strong>Professeur:</strong> <?php echo htmlspecialchars($row['prof_nom']); ?></p>
+                        <a href="course_detail.php?id_cour=<?php echo $row['ID_COUR']; ?>" class="btn-primary">Voir plus</a>
+                    </div>
+            <?php
+                }
+            } else {
+                echo "<p>Aucun cours disponible.</p>";
             }
-        } else {
-            echo "<p>No courses available.</p>";
-        }
-        ?>
-
+            ?>
+        </div>
     </div>
 
 </body>
 </html>
 <?php
-
-    // Gérer l'ajout d'un cours
-    if (isset($_POST['add_course'])) {
-        $course_code = mysqli_real_escape_string($conn, $_POST['course_code']);
-        $id_cour = mysqli_real_escape_string($conn, $_POST['id_cour']);
-
-        // Vérifier le code du cours
-        $query = "SELECT MDP_COURE FROM cour WHERE ID_COUR = '$id_cour'";
-        $course_result = mysqli_query($conn, $query);
-        $course = mysqli_fetch_assoc($course_result);
-
-        if ($course_code == $course['MDP_COURE']) {
-            // Vérifier si l'étudiant est déjà inscrit
-            $check_query = "SELECT * FROM inscription WHERE ID_COUR = '$id_cour' AND ID = '$id_etudiant'";
-            $check_result = mysqli_query($conn, $check_query);
-
-            if (mysqli_num_rows($check_result) == 0) {
-                // Ajouter le cours
-                $insert_query = "INSERT INTO inscription (ID_COUR, ID) VALUES ('$id_cour', '$id_etudiant')";
-                if (mysqli_query($conn, $insert_query)) {
-                    echo "<p class='success'>Course added to your list successfully!</p>";
-                } else {
-                    echo "<p class='error'>Error adding course. Please try again.</p>";
-                }
-            } else {
-                echo "<p class='error'>You are already enrolled in this course.</p>";
-            }
-        } else {
-            echo "<p class='error'>Incorrect course code.</p>";
-        }
-    }
 } else {
-    echo "You must be logged in as a student to access this page.";
+    echo "Vous devez être connecté en tant qu'étudiant pour accéder à cette page.";
 }
 ?>
