@@ -39,6 +39,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             background-color: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Même dégradé */
             padding: 15px 0;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         nav ul {
@@ -75,7 +76,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            flex: 1; /* Permet au contenu de prendre l'espace restant */
+             /* Permet au contenu de prendre l'espace restant */
         }
 
         /* Titre de la section */
@@ -213,9 +214,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Tous droits réservés</p>
-    </footer>
+    
 
 </body>
 </html>

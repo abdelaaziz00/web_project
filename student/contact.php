@@ -75,7 +75,7 @@ body {
 
 /* Barre de navigation */
 nav {
-    background-color: #87CEEB; /* Bleu ciel */
+    background-color: linear-gradient(to right,rgb(86, 176, 201), #ffffff); /* Bleu ciel */
     padding: 15px 0;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -118,7 +118,7 @@ nav ul li a:hover {
 
 /* Titre de la page */
 h2 {
-    color: rgb(61, 125, 244); /* Bleu ciel */
+    color: rgb(86, 176, 201); /* Bleu ciel */
     font-size: 32px;
     margin-bottom: 20px;
     text-align: center;
@@ -156,7 +156,7 @@ h2 {
 .contact-button {
     width: 100%;
     padding: 12px;
-    background-color: rgb(61, 125, 244); /* Bleu ciel */
+    background-color: rgb(86, 176, 201); /* Bleu ciel */
     color: white;
     font-size: 16px;
     border: none;
@@ -166,7 +166,7 @@ h2 {
 }
 
 .contact-button:hover {
-    background-color: #6495ED; /* Bleu plus foncé */
+    background-color:rgb(106, 200, 231); /* Bleu plus foncé */
 }
 
 /* Pied de page */

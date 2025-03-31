@@ -85,14 +85,15 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f7fc; /* Fond blanc légèrement gris */
+            background: linear-gradient(to right,rgb(86, 176, 201), #ffffff);
             color: #333;
         }
 
         nav {
-            background-color: #87CEEB; /* Bleu ciel */
+            background-color:linear-gradient(to right,rgb(86, 176, 201), #ffffff); /* Bleu ciel */
             padding: 15px 0;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         nav ul {
