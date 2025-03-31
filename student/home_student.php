@@ -20,13 +20,13 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: white; /* Fond blanc pour la page */
+            background: linear-gradient(to right,rgb(86, 176, 201), #ffffff);
             color: #333;
         }
 
         /* Barre de navigation */
         nav {
-            background-color: #A1E3F9; /* Bleu clair pour la barre de navigation */
+            background-color: linear-gradient(to right,rgb(86, 176, 201), #ffffff);
             padding: 15px 0;
             text-align: center;
         }
@@ -70,7 +70,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         /* Titre */
         h2 {
             text-align: center;
-            color: #A1E3F9; /* Bleu clair pour le titre */
+            color: #007bff;
             margin-bottom: 20px;
         }
 
@@ -98,7 +98,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .course h3 {
-            color: #A1E3F9; /* Bleu clair pour les titres des cours */
+            color: #007bff;
         }
 
         .course p {
@@ -108,7 +108,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         /* Bouton "Voir plus" */
         .btn-primary {
             display: inline-block;
-            background-color: #A1E3F9; /* Bleu clair pour les boutons */
+            background-color: #007bff;
             color: white;
             padding: 10px 15px;
             text-decoration: none;
@@ -118,7 +118,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .btn-primary:hover {
-            background-color: #7CC1D6; /* Un peu plus foncé au survol */
+            background-color: #0056b3;
         }
 
         /* Messages */
@@ -133,6 +133,14 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             font-weight: bold;
             text-align: center;
         }
+        .footer {
+    text-align: center;
+    padding: 20px;
+    color: black;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
     </style>
 </head>
 <body>
@@ -143,7 +151,8 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             <li><a href="home_student.php">Accueil</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
             <li><a href="profile.php">Mon Profil</a></li>
-            <li><a href="../autentification/login.php">Déconnexion</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../autentification/logout.php">Déconnexion</a></li>
         </ul>
     </nav>
 
@@ -175,7 +184,9 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             }
             ?>
         </div>
+        
     </div>
+    
 
 </body>
 </html>

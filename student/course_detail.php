@@ -72,13 +72,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_course']) && !$is_
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Même couleur de fond que home_student.php */
             color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Utiliser la hauteur complète de la fenêtre */
         }
 
         /* Barre de navigation */
         nav {
-            background-color: #004aad;
+            background-color: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Même dégradé */
             padding: 15px 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -106,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_course']) && !$is_
         }
 
         nav ul li a:hover {
-            background-color: #005bb5;
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         /* Conteneur principal */
@@ -118,11 +121,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_course']) && !$is_
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Permet au contenu de prendre l'espace restant */
         }
 
         /* Titre et contenu du cours */
         h2 {
-            color: #004aad;
+            color: #007bff; /* Bleu pour le titre */
             font-size: 32px;
             margin-bottom: 20px;
         }
@@ -172,12 +176,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_course']) && !$is_
         }
 
         .add-course-form input:focus {
-            border-color: #004aad;
+            border-color: #007bff; /* Bleu pour le focus */
         }
 
         .add-course-form button {
             padding: 12px;
-            background-color: #004aad;
+            background-color: #007bff; /* Bleu pour le bouton */
             color: white;
             font-size: 16px;
             border: none;
@@ -187,19 +191,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_course']) && !$is_
         }
 
         .add-course-form button:hover {
-            background-color: #003494;
+            background-color: #0056b3; /* Bleu foncé pour le survol */
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #004aad;
+            background-color: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Footer bleu */
             color: white;
             font-size: 14px;
             margin-top: 40px;
         }
-
     </style>
 </head>
 <body>
@@ -210,7 +213,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_course']) && !$is_
             <li><a href="home_student.php">Accueil</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
             <li><a href="profile.php">Mon Profil</a></li>
-            <li><a href="../autentification/login.php">Déconnexion</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../autentification/logout.php">Déconnexion</a></li>
         </ul>
     </nav>
 

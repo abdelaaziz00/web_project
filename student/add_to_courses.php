@@ -176,7 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['course_id']) && isset(
         <ul>
             <li><a href="home_student.php">Home</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
-            <li><a href="login.php">Déconnexion</a></li>
+            <li><a href="profile.php">Mon Profil</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../autentification/logout.php">Déconnexion</a></li>
         </ul>
     </nav>
 

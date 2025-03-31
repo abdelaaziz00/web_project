@@ -27,13 +27,16 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #dfe9f3, #ffffff);
+            background: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Même couleur de fond que home_student.php */
             color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Utiliser la hauteur complète de la fenêtre */
         }
 
         /* Navigation */
         nav {
-            background-color: #007bff;
+            background-color: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Même dégradé */
             padding: 15px 0;
             text-align: center;
         }
@@ -72,12 +75,13 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Permet au contenu de prendre l'espace restant */
         }
 
         /* Titre de la section */
         h2 {
             text-align: center;
-            color: #007bff;
+            color: #007bff; /* Bleu pour le titre */
             margin-bottom: 20px;
         }
 
@@ -104,7 +108,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .course h3 {
-            color: #007bff;
+            color: #007bff; /* Bleu pour le titre du cours */
         }
 
         .course p {
@@ -122,21 +126,21 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .btn-primary {
-            background-color: #007bff;
+            background-color: #007bff; /* Bleu pour "Voir plus" */
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Bleu foncé pour le survol */
         }
 
         .btn-danger {
-            background-color: #dc3545;
+            background-color: #dc3545; /* Rouge pour la désinscription */
             border: none;
             cursor: pointer;
         }
 
         .btn-danger:hover {
-            background-color: #c82333;
+            background-color: #c82333; /* Rouge foncé pour le survol */
         }
 
         /* Conteneur pour les boutons */
@@ -149,7 +153,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
 
         /* Message d'erreur */
         .error {
-            color: red;
+            color: #f44336; /* Rouge pour les erreurs */
             font-size: 16px;
             text-align: center;
         }
@@ -158,9 +162,12 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #007bff;
+            background-color: linear-gradient(to right, rgb(86, 176, 201), #ffffff); /* Footer bleu */
             color: white;
             margin-top: 40px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -172,7 +179,8 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             <li><a href="home_student.php">Accueil</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
             <li><a href="profile.php">Mon Profil</a></li>
-            <li><a href="../autentification/login.php">Déconnexion</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../autentification/logout.php">Déconnexion</a></li>
         </ul>
     </nav>
 

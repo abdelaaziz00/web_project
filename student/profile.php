@@ -85,12 +85,12 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f7fc;
+            background: #f4f7fc; /* Fond blanc légèrement gris */
             color: #333;
         }
 
         nav {
-            background-color: #007bff;
+            background-color: #87CEEB; /* Bleu ciel */
             padding: 15px 0;
             text-align: center;
         }
@@ -143,7 +143,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .profile-header h2 {
-            color: #007bff;
+            color: #87CEEB; /* Bleu ciel */
             margin-top: 10px;
         }
 
@@ -157,7 +157,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .profile-details p strong {
-            color: #007bff;
+            color: #87CEEB; /* Bleu ciel */
         }
 
         .upload-form {
@@ -171,7 +171,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
 
         .upload-form input[type="submit"] {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #87CEEB; /* Bleu ciel */
             color: white;
             border: none;
             cursor: pointer;
@@ -179,7 +179,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         }
 
         .upload-form input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #6495ED; /* Bleu plus foncé */
         }
 
         .errors {
@@ -196,7 +196,8 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             <li><a href="home_student.php">Accueil</a></li>
             <li><a href="mes_courses.php">Mes Cours</a></li>
             <li><a href="profile.php">Mon Profil</a></li>
-            <li><a href="../autentification/login.php">Déconnexion</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../autentification/logout.php">Déconnexion</a></li>
         </ul>
     </nav>
 
@@ -204,7 +205,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
         <div class="profile-header">
             <!-- Afficher l'image de l'étudiant, ou une image par défaut -->
             <img src="../uploads/<?php echo htmlspecialchars($profile_image); ?>" alt="Image de profil">
-            <h2><?php echo htmlspecialchars($student['NOM']); ?></h2>
+            <h2><?php echo htmlspecialchars($student['NOM']) . ' ' . htmlspecialchars($student['PRENOM']);  ?></h2>
         </div>
 
         <div class="profile-details">
@@ -231,6 +232,7 @@ if (isset($_SESSION["id"]) && $_SESSION["role"] == "student") {
             ?>
         </div>
     </div>
+    
 
 </body>
 </html>

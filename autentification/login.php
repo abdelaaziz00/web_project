@@ -105,6 +105,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <img src="googleimg.png" alt="google">
                 Connexion avec Google
             </button>
+
+            <p class="switch-form">Pas encore de compte ? <a href="signup.php">Inscrivez-vous</a></p>
+
         </div>
     </div>
 </body>
